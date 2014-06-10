@@ -1,0 +1,34 @@
+
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="fee-details-label" aria-hidden="true">
+	<div class="modal-dialog">
+    <div class="modal-content">
+	<div class="modal-header">
+		<a href="#" class="btn btn-success pull-right" data-dismiss="modal">×</a>
+		<h4>Digite o nome da escola</h4>
+	</div> 
+      		<div class="modal-body">
+		<form method="post" action="{{url_for('search')}}" name="search">
+		<p>{{g.search_form.search(size=80)}}</p>
+		<p><button type="submit" class="btn btn-success">Buscar Escola</button></p>
+		</form> 
+		<table class="table table-striped">
+		   <tbody>
+		   	{% for resultado in resultados %}
+		   <tr>	
+     			<td> 
+     			<b> Escola: {{resultado.nome}} </b>
+     				<p> Município: {{resultado.cod_mun}} </p>
+     			<p> Estado: {{resultado.cod_uf}} </p> 
+     			</td>
+     		<td> <a href="{{ url_for('escola', cod_escola =resultado.cod_escola ) }}">
+     	<button type="button" class="btn btn-primary btn-xs"> 
+     	<span class="glyphicon glyphicon-home"></span>Escolher</button></a> </td>
+          </tr>
+          </tbody>
+        {% endfor %}
+          </table>
+            </div>	
+		</div>																	
+</div>
+</div>

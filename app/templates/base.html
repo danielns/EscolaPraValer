@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8"> 
+  	<!--<meta http-equiv="X-UA-Compatible" content="chrome=1">--> 
+    <title>EscolaPraValer</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/static/css/jquery.dataTables.css">
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+   <script type="text/javascript" src="/static/js/jquery.dataTables.js"></script>
+   <script src="/static/js/data_table_buiuzera.js" type="text/javascript"></script>
+   <script src="/static/js/html5-canvas-bar-graph.js"></script>
+
+<script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Titillium+Web:400,600,600italic,300:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); </script>
+
+<style>
+	*{font-family: 'Titillium Web', sans-serif;
+	  color:#737373; }
+	 .navbar{
+	 		background:#58A8DD;
+	 		font:black;
+	 		height:60px;
+	 		border-bottom:0px; 
+	 		border-top:0px;
+	 	 } 
+	 .navbar span {font-size:18px; font-family:'Titillium Web'; width:100%; line-height:30px; color:#FFFFFF;}
+	 .panel-footer {background:#58A8DD;}
+	 .panel-footer span{color:#FFFFFF;}
+	 .page-header {border-bottom:0px; border-top:0px;}
+	 
+</style>
+
+</head>
+
+ <div class="page-header">
+   <table width="100%">
+  <tr>
+    <td width="10%"></td>
+    <td width="30%"> <img src="/static/img/marca.png" ></td>
+    <td width="30%"></td>
+    <td> APOIO:</td>
+    <td width='1%'></td>
+    <td>
+    <img src="/static/img/inep2.png" >
+  	<img src="/static/img/fundacaoleman2.png">
+   </td>
+    <td width="9%"></td
+   </tr>
+  </table>
+</div>
+ 	<nav class="navbar navbar-default" role="navigation">
+   <div>
+      <ul class="nav navbar-nav">
+         <li><a href="#"></a></li> <!-- vaggeta -->
+         <li><a href="#"></a></li>
+         <li><a href="#"></a></li>
+         <li><a href="#"></a></li>
+         <li><a href="#"></a></li>
+         <li><a href="#"></a></li>
+         <li><a href="{{ url_for('index') }}"><span>HOME</span></a></li>
+       <!--  <li><a href="#"><span>QUEM SOMOS</span></a></li>
+         <li><a href="#"><span>ENCONTRE UMA ESCOLA</span></a></li> 
+         <li><a href="#"><span>EXPERIÊNCIAS</span></a></li> -->
+         <li><a href="{{url_for('como_funciona')}}"><span>COMO FUNCIONA</span></a></li> 
+         <li><a href="{{url_for('contato')}}"><span>CONTATO</span></a></li>
+           </ul>
+        </div>
+        </nav>
+        {% block content %}{% endblock %}
+      <div class="panel-footer">
+      	<table width="100%">
+      		<tr>
+      		<td width=35%></td>
+      	<td width=35%><span>@COPYRIGHT 2014 - Todos os Direitos reservados ESCOLA PRAVALER</span></td>
+      		    	<td width=30%></td>
+      	</tr>
+      	</div>
+           
+</html>

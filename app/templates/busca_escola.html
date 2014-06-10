@@ -1,0 +1,60 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<!--
+{% if resultados==NONE %}
+<div align='center'>
+    <a href="#" class="btn btn-lg btn-success"
+   		data-toggle="modal"
+   			data-target="#basicModal">Buscar Escola</a>
+    {% else %}
+    <h1> Resultados para a Pesquisa {{query}}:</h1>
+    <a href="#" class="btn btn-lg btn-success"
+   		data-toggle="modal"
+   			data-target="#basicModal">Mostrar os resultados para a busca {{query}}</a>
+    {% endif %}
+</div>
+-->
+<!--
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="fee-details-label" aria-hidden="true">
+	<div class="modal-dialog">
+    <div class="modal-content">
+	<div class="modal-header">
+		<a href="#" class="btn btn-success pull-right" data-dismiss="modal">×</a>
+		<h4>Digite o nome da escola</h4>
+	</div> 
+      		<div class="modal-body">
+		<form method="post" action="{{url_for('search')}}" name="search">
+		<p>{{g.search_form.search(size=80)}}</p>
+		<p><button type="submit" class="btn btn-success">Buscar Escola</button></p>
+		</form> -->
+		<div class='container'>
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+		<h1>Resultados para o termo pesquisado: '{{query}}' </h1>	 
+		<table class="table table-striped">
+		   <tbody>
+		   	{% for resultado in resultados %}
+		   <tr>	
+     			<td> <b> Escola: {{resultado.nome}} </b>
+     				<p> Município: {{resultado.nome_mun}} </p>
+     			<p> Estado: {{resultado.nome_uf}} </p> 
+     			</td>
+     		<td> <br>
+     	<a href="{{ url_for('escola', cod_escola =resultado.cod_escola ) }}">
+     	<button type="button" class="btn btn-primary btn-xs"> 
+     	<span class="glyphicon glyphicon-home"></span>Escolher</button></a> </td>
+          </tr>
+          </tbody>
+        {% endfor %}
+          </table>
+          </div>
+            <div class="col-md-2"> </div>	
+		</div>																	
+
+
+
+{% endblock %}
+
+

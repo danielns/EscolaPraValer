@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style type="text/css">
+	.faixa_amarela{width:1278px; height:150px; background: url('/static/img/top100.png');}
+	.banner{width:1278px; height:300px; background: url('/static/img/banner.jpg');}
+	.col-md-4 span{font-family: 'Titillium Web', sans-serif; font-size:20px; width:100%; margin-left:5px; margin-right:5px; display:inline-block; top:20px;}
+	.table-bordered th {font-size:16px; font-weight: bold; color:#666; background:#FDFBCC;}
+	.table-bordered td span{font-size:16px; font-weight: bold; color:#58A8DD;}
+	#botao_busca_escola {width:548px; height:40px;}
+	.h3{font-family: 'Titillium Web', sans-serif; font-size:20px; width:100%; text-align:justify; margin-left:10px; margin-right:5px;}
+	.p {margin: 10px;}
+	.form-control {
+				display: block;
+				width: 97%;
+				height: 59px;
+				padding: 6px 12px;
+				font-size: 21px;
+				line-height: 1.428571429;
+				color: #555;
+				vertical-align: middle;
+				background-color: #fff;
+				background-image: none;
+				border: 1px solid #ccc;
+				border-radius: 4px; 
+			      }
+</style>
+
+
+<div class="row" align='center'>
+       <img src='/static/img/banner.jpg'>
+       <!--<div class='banner'></div> -->
+       <!-- <img  src="/static/img/banner.png" > -->
+       <img src='/static/img/encontre.jpg'>
+      	<p></br></p>
+      		<form method="post" action="{{url_for('search')}}" name="search" role='form'>
+      			<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+		{{g.search_form.search(size=80, placeholder="DIGITE O NOME DE UMA ESCOLA",class="form-control")}}
+		</div>
+		</div>
+		<p></br><button type="submit" id="botao_busca_escola" class="btn btn-success">ENCONTRE SUA ESCOLA</button></p>
+		</form>
+			<p></br></p>
+			<p></br></p>
+		<img src='/static/img/cases.jpg'>        
+		
+        </div>
+       <!-- <div class="col-md-1"></div> -->
+ 
+
+		<br>
+		<div class='container'>
+			<div class='row'>
+                <div class="col-md-7"> <!-- TABELA -->
+          <table class="table table-bordered">
+                <thead>
+                    <tr>
+                       <th>Nome da Escola</th>
+                        <th>IDEB da Escola</th>
+                        <th>IDEB do Perfil</th>
+                        <th>Fator Escola</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    {% for melhor_escola in melhores_escolas %}	
+                    <tr>
+                        <td><a href = "/escola/{{melhor_escola.cod_escola}}">{{melhor_escola.nome}}</a></td>
+                        <td align=center>{{melhor_escola.ideb}}</td>
+                        <td align=center>{{melhor_escola.IdebMedio}}</td>
+                        <td align=center><span>{{melhor_escola.Diff}}</span></td>
+                   </tr>
+                   {% endfor %}
+                    </tbody>
+            </table>
+          </div>
+          <div class="col-md-1"></div>
+        <div class="col-md-4">
+        	<p></br></p>
+        	<p></br></p>
+        	<img  src="/static/img/marca2.png" >
+         <p></br></p>
+         <span>Identificamos e divulgamos escolas com excelentes resultados mesmo em contextos desfavoráveis e engaja professores, agentes públicos e sociedade a fazer a mudança na educação.</span>
+         <p></br></p>
+         <span><a href="{{url_for('como_funciona')}}">Conheça mais o Projeto </a></span>
+        </div>
+       </div>
+             <div class="col-md-1"></div>
+       </div>
+      
+  
+{% endblock %}

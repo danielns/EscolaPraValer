@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.chart rect {  
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+</style>
+<svg class="chart"></svg>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var data = [4, 8, 15, 16, 23, 42];
+
+var width = 420,
+    barHeight = 20;
+
+var x = d3.scale.linear()
+    .domain([0, d3.max(data)]) // Dos valores dentro do domínio
+    .range([0, width]); // Os valores dentro do domínio são apresentados dentro de uma escola de 0 a width
+
+var chart = d3.select(".chart")
+    .attr("width", width)
+    .attr("height", barHeight * data.length); // a altura de cada barra é definida pela quantidade de items
+
+var bar = chart.selectAll("g")
+    .data(data)
+  .enter().append("g") // Em svg 0 está no topo. Ou seja, é necessário fazer uma transformação par ao que é convencional.
+    .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; }); 
+
+bar.append("rect") // g é um elemento que contém "rect" e "text"
+    .attr("width", x) // largura da barra
+    .attr("height", barHeight - 1); // Espaçamento entre as barras
+
+bar.append("text")
+    .attr("x", function(d) { return x(d) - 3; }) // posicao da label horizontalmente (abixo: posicao da label verticalmente)
+    .attr("y", barHeight / 2)                     
+    .attr("dy", ".35em") // Ajuste verticalmente também
+    .text(function(d) { return d; }); // retorna o valor como label para o gráfico
+
+</script>
+
+JSONData = [
+  { "id": 3, "created_at": "Sun May 05 2013", "amount": 12000},
+  { "id": 1, "created_at": "Mon May 13 2013", "amount": 2000},
+  { "id": 2, "created_at": "Thu Jun 06 2013", "amount": 17000},
+  { "id": 4, "created_at": "Thu May 09 2013", "amount": 15000},
+  { "id": 5, "created_at": "Mon Jul 01 2013", "amount": 16000}
+]
+
+<svg class="chart"></svg>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+(function() {
+  var data = JSONData.slice()
+  var format = d3.time.format("%a %b %d %Y")
+  var amountFn = function(d) { return d.amount }
+  var dateFn = function(d) { return format.parse(d.created_at) }
+
+  var x = d3.time.scale()
+    .range([10, 280])
+    .domain(d3.extent(data, dateFn))
+
+  var y = d3.scale.linear()
+    .range([180, 10])
+    .domain(d3.extent(data, amountFn))
+  
+  var svg = d3.select("#demo").append("svg:svg")
+  .attr("width", 300)
+  .attr("height", 200)
+
+  svg.selectAll("circle").data(data).enter()
+   .append("svg:circle")
+   .attr("r", 4)
+   .attr("cx", function(d) { return x(dateFn(d)) })
+   .attr("cy", function(d) { return y(amountFn(d)) }) 
+})();
+</script>
