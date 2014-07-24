@@ -38,33 +38,33 @@
 	 		height:60px;
 	 		border-bottom:0px; 
 	 		border-top:0px;
+	 		width:auto;
 	 	 } 
 	 .navbar span {font-size:18px; font-family:'Titillium Web'; width:100%; line-height:30px; color:#FFFFFF;}
-	 .panel-footer {background:#58A8DD;}
+	 .panel-footer {background:#58A8DD; width:auto;}
 	 .panel-footer span{color:#FFFFFF;}
-	 .page-header {border-bottom:0px; border-top:0px;}
-	 
+	 .page-header {
+	 	padding-bottom: 0px;
+		margin: 21px 0 16px;
+		padding-left: 80px;
+		border-bottom:0px;
+		border-top:0px;
+		width:auto;
+	 }
+	 	 
 </style>
 
 </head>
 
- <div class="page-header">
-   <table width="100%">
-  <tr>
-    <td width="10%"></td>
-    <td width="30%"> <img src="/static/img/marca.png" ></td>
-    <td width="30%"></td>
-    <td> APOIO:</td>
-    <td width='1%'></td>
-    <td>
+	<div class="page-header"> 
+   <img src="/static/img/marca.png" >
+   </div>
+  <!-- 
     <img src="/static/img/inep2.png" >
-  	<img src="/static/img/fundacaoleman2.png">
-   </td>
-    <td width="9%"></td
-   </tr>
-  </table>
-</div>
- 	<nav class="navbar navbar-default" role="navigation">
+  	<img src="/static/img/fundacaoleman2.png"> --> 
+    
+
+ 	<nav class="navbar" role="navigation">
    <div>
       <ul class="nav navbar-nav">
          <li><a href="#"></a></li> <!-- vaggeta -->
@@ -91,5 +91,5 @@
       		    	<td width=30%></td>
       	</tr>
       	</div>
-           
+</div>     
 </html>
